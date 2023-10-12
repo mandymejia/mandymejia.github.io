@@ -1,10 +1,6 @@
 ---
 layout: post
-title: You're up and running!
+title: Goodbye Wordpress, Hello Github!
 ---
 
-Next you can update your site name, avatar and other options using the _config.yml file in the root of your repository (shown below).
-
-![_config.yml]({{ site.baseurl }}/images/config.png)
-
-The easiest way to make your first post is to edit this one. Go into /_posts/ and update the Hello World markdown file. For more instructions head over to the [Jekyll Now repository](https://github.com/barryclark/jekyll-now) on GitHub.
+I am transitioning my personal website and blog from being hosted on Wordpress to Github pages.  I'll be transporting existing posts over before adding one or two new ones.  I'm excited to start [blogging like a hacker](https://tom.preston-werner.com/2008/11/17/blogging-like-a-hacker.html) using Markdown and Github!
