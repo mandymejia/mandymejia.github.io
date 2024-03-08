@@ -33,13 +33,13 @@ above.
 For the purpose of exploratory analysis, this is great news! We can
 simply:
 
-1.  Regress $\bf Z$ from $\bf X$ to produce $\bf X^\*$,
+1.  Regress $\bf Z$ from $\bf X$ to produce $\bf \tilde{X}$,
 
-2.  Regress $\bf y$ from $\bf X$ to produce $\bf y^\*$, then
+2.  Regress $\bf y$ from $\bf X$ to produce $\bf \tilde{y}$, then
 
-3.  Plot $\bf y^\*$ versus $\bf X^\*$ to get a visual impression of the
-    relationship between $\bf y$ versus $\bf X$, while controlling for
-    $\bf Z$.
+3.  Plot $\bf \tilde{y}$ versus $\bf \tilde{X}$ to get a visual
+    impression of the relationship between $\bf y$ versus $\bf X$, while
+    controlling for $\bf Z$.
 
 A few things might be revealed:
 
@@ -205,13 +205,13 @@ $$
 Recall that $\bf H$ “puts the hat on” $\bf y$ when predicting $\bf y$
 from $\bf Z$, i.e. $\bf\hat{y} = \bf Hy$. The residuals
 ${\bf\hat{y}} - {\bf y} = \bf (I-H)y$ are what we mean when we say
-“$\bf y$ adjusted for $\bf Z$”, which we are calling $\bf y^\*$. So
-$\bf y^\* = (I-H)y$, and $\bf X^\* = (I-H)X$, where in both cases
-$\bf H$ is the hat matrix associated with design matrix $\bf Z$, given
-in the equation above.
+“$\bf y$ adjusted for $\bf Z$”, which we are calling $\bf \tilde{y}$. So
+$\bf \tilde{y} = (I-H)y$, and $\bf \tilde{X} = (I-H)X$, where in both
+cases $\bf H$ is the hat matrix associated with design matrix $\bf Z$,
+given in the equation above.
 
-Now that we have our adjusted variables $\bf y^\*$ and $\bf X^\*$, we
-can relate them through the model
+Now that we have our adjusted variables $\bf \tilde{y}$ and
+$\bf \tilde{X}$, we can relate them through the model
 
 $$
 {\bf \tilde{y}} = {\bf \tilde{X}}\boldsymbol\beta + \boldsymbol\epsilon
@@ -220,11 +220,11 @@ $$
 The goal is to show that the OLS estimate for **β** in this model is
 exactly equal to the OLS estimate for **β** in the earlier model with
 $\bf X$ and $\bf Z$. First, let’s work out the OLS estimate for **β** in
-this model relating $\bf y^\*$ to $\bf X^\*$. We will use the fact that
-$\bf I - H$ is symmetric and idempotent, meaning that
+this model relating $\bf \tilde{y}$ to $\bf \tilde{X}$. We will use the
+fact that $\bf I - H$ is symmetric and idempotent, meaning that
 $\bf (I - H)(I - H) = (I - H)$.
 
-$\hat{\boldsymbol\beta}^\* = ({\bf {X^\*}'{X^\*}})^{-1}{\bf {X^\*}'y^\*} = ({\bf X}'({\bf I - H}){\bf X})^{-1}{\bf X}'({\bf I - H}){\bf y}$
+$\tilde{\boldsymbol\beta} = ({\bf \tilde{X}'\tilde{X}})^{-1}{\bf \tilde{X}'\tilde{y}} = ({\bf X}'({\bf I - H}){\bf X})^{-1}{\bf X}'({\bf I - H}){\bf y}$
 
 That was the easy part. :) Now let’s work out the OLS estimate for **β**
 in the earlier model relating $\bf y$ to $\bf X$ and $\bf Z$. Let
