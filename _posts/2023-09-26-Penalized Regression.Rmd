@@ -200,23 +200,29 @@ As before, we can work out the estimate for \(\boldsymbol \beta\) in the case of
 <div>
 $$
 \begin{pmatrix} \hat{\boldsymbol\beta}^R \\ \hat{\boldsymbol\gamma}^R \end{pmatrix}
-= \Big( {\bf W}'{\bf W} + 
-\begin{pmatrix}\lambda{\bf I_p}^{-1} & {\bf 0} \\ {\bf 0} & {\bf 0} \end{pmatrix} \Big)^{-1}
+= \Bigg( {\bf W}'{\bf W} + 
+\begin{pmatrix}\lambda{\bf I_p}^{-1} & {\bf 0} \\ {\bf 0} & {\bf 0} \end{pmatrix} \Bigg)^{-1}
 {\bf W}'{\bf y} 
 $$
 </div>
 
+<div>
 $$
 = \Bigg(\begin{pmatrix} {\bf X}'{\bf X} & {\bf X}'{\bf Z} \\
 {\bf Z}'{\bf X} & {\bf Z}'{\bf Z} \end{pmatrix} + 
 \begin{pmatrix}\lambda{\bf I}_p^{-1} & {\bf 0} \\ {\bf 0} & {\bf 0} \end{pmatrix}\Bigg)^{-1}
 \begin{pmatrix}{\bf X}'{\bf y} \\ {\bf Z}'{\bf y} \end{pmatrix} 
 $$
+</div>
+
+<div>
 $$
 = \begin{pmatrix} {\bf X}'{\bf X} + \lambda{\bf I}_p & {\bf X}'{\bf Z} \\
 {\bf Z}'{\bf X} & {\bf Z}'{\bf Z} \end{pmatrix} ^{-1}
 \begin{pmatrix}{\bf X}'{\bf y} \\ {\bf Z}'{\bf y} \end{pmatrix}
 $$
+</div>
+
 
 Again we can use block matrix inverse formulas to obtain the estimator for \(\boldsymbol \beta\). Skipping some steps this time, we obtain
 

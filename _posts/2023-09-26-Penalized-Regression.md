@@ -283,8 +283,8 @@ write:
 
 $$
 \begin{pmatrix} \hat{\boldsymbol\beta}^R \\ \hat{\boldsymbol\gamma}^R \end{pmatrix}
-= \Big( {\bf W}'{\bf W} + 
-\begin{pmatrix}\lambda{\bf I_p}^{-1} & {\bf 0} \\ {\bf 0} & {\bf 0} \end{pmatrix} \Big)^{-1}
+= \Bigg( {\bf W}'{\bf W} + 
+\begin{pmatrix}\lambda{\bf I_p}^{-1} & {\bf 0} \\ {\bf 0} & {\bf 0} \end{pmatrix} \Bigg)^{-1}
 {\bf W}'{\bf y} 
 $$
 
@@ -294,6 +294,7 @@ $$
 \begin{pmatrix}\lambda{\bf I}\_p^{-1} & {\bf 0} \\ {\bf 0} & {\bf 0} \end{pmatrix}\Bigg)^{-1}
 \begin{pmatrix}{\bf X}'{\bf y} \\ {\bf Z}'{\bf y} \end{pmatrix} 
 $$
+
 $$
 = \begin{pmatrix} {\bf X}'{\bf X} + \lambda{\bf I}\_p & {\bf X}'{\bf Z} \\
 {\bf Z}'{\bf X} & {\bf Z}'{\bf Z} \end{pmatrix} ^{-1}
