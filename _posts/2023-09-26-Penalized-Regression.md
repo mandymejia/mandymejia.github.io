@@ -281,11 +281,13 @@ penalty on $\bf X$. Letting
 $\bf W := \begin{bmatrix} \bf X & \bf Z \end{bmatrix}$ again, we can
 write:
 
-$$\begin{pmatrix} \hat{\boldsymbol\beta}^R \\ \hat{\boldsymbol\gamma}^R \end{pmatrix}
-= \Bigg( {\bf W}'{\bf W} + 
-\begin{pmatrix}\lambda{\bf I}\_p^{-1} & {\bf 0} \\ {\bf 0} & {\bf 0} \end{pmatrix} \Bigg)^{-1}
+$$
+\begin{pmatrix} \hat{\boldsymbol\beta}^R \\ \hat{\boldsymbol\gamma}^R \end{pmatrix}
+= \Big( {\bf W}'{\bf W} + 
+\begin{pmatrix}\lambda{\bf I_p}^{-1} & {\bf 0} \\ {\bf 0} & {\bf 0} \end{pmatrix} \Big)^{-1}
 {\bf W}'{\bf y} 
 $$
+
 $$
 = \Bigg(\begin{pmatrix} {\bf X}'{\bf X} & {\bf X}'{\bf Z} \\
 {\bf Z}'{\bf X} & {\bf Z}'{\bf Z} \end{pmatrix} + 
