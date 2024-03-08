@@ -243,15 +243,13 @@ and (1,2) blocks of $\bf A$, the inverse of the block matrix that
 appears above. Using standard formulas for block matrix inverses, we can
 obtain
 
-$$
-\hat{\boldsymbol\beta} = {\bf A}\_{(1,1)}{\bf X}'{\bf y} + {\bf A}\_{(1,2)}{\bf Z}'{\bf y} \\
-= ({\bf X}'{\bf X} - {\bf X}'{\bf Z}({\bf Z}'{\bf Z})^{-1}{\bf Z}'{\bf X})^{-1}{\bf X}'{\bf y} - ({\bf X}'{\bf X} - {\bf X}'{\bf Z}({\bf Z}'{\bf Z})^{-1}{\bf Z}'{\bf X})^{-1}{\bf X}'{\bf Z}({\bf Z}'{\bf Z})^{-1}{\bf Z}'{\bf y} \\
-= ({\bf X}'{\bf X} - {\bf X}'{\bf H}{\bf X})^{-1}{\bf X}'{\bf y} - ({\bf X}'{\bf X} - {\bf X}'{\bf H}{\bf X})^{-1}{\bf X}'{\bf H}{\bf y} \\
-= ({\bf X}'{\bf X} - {\bf X}'{\bf H}{\bf X})^{-1}({\bf X}'{\bf y} - {\bf X}'{\bf H}{\bf y})\\
-= ({\bf X}({\bf I - H}){\bf X})^{-1}({\bf X}'({\bf I - H}){\bf y})\\
-= ({\bf \tilde{X}}{\bf \tilde{X}})^{-1}({\bf \tilde{X}}'{\bf \tilde{y}})\\
-= \tilde{\boldsymbol\beta}
-$$
+$\hat{\boldsymbol\beta} = {\bf A}\_{(1,1)}{\bf X}'{\bf y} + {\bf A}\_{(1,2)}{\bf Z}'{\bf y}$
+$= ({\bf X}'{\bf X} - {\bf X}'{\bf Z}({\bf Z}'{\bf Z})^{-1}{\bf Z}'{\bf X})^{-1}{\bf X}'{\bf y} - ({\bf X}'{\bf X} - {\bf X}'{\bf Z}({\bf Z}'{\bf Z})^{-1}{\bf Z}'{\bf X})^{-1}{\bf X}'{\bf Z}({\bf Z}'{\bf Z})^{-1}{\bf Z}'{\bf y}$
+$= ({\bf X}'{\bf X} - {\bf X}'{\bf H}{\bf X})^{-1}{\bf X}'{\bf y} - ({\bf X}'{\bf X} - {\bf X}'{\bf H}{\bf X})^{-1}{\bf X}'{\bf H}{\bf y}$
+$= ({\bf X}'{\bf X} - {\bf X}'{\bf H}{\bf X})^{-1}({\bf X}'{\bf y} - {\bf X}'{\bf H}{\bf y})$
+$= ({\bf X}({\bf I - H}){\bf X})^{-1}({\bf X}'({\bf I - H}){\bf y})$
+$= ({\bf \tilde{X}}{\bf \tilde{X}})^{-1}({\bf \tilde{X}}'{\bf \tilde{y}})$
+$= \tilde{\boldsymbol\beta}$
 
 Voila, it works!
 
@@ -285,8 +283,8 @@ write:
 
 $$
 \begin{pmatrix} \hat{\boldsymbol\beta}^R \\ \hat{\boldsymbol\gamma}^R \end{pmatrix}
-= \Big\\ {\bf W}'{\bf W} + 
-\begin{pmatrix}\lambda{\bf I}\_p^{-1} & {\bf 0} \\ {\bf 0} & {\bf 0} \end{pmatrix}\Big\\^{-1}
+= \Bigg( {\bf W}'{\bf W} + 
+\begin{pmatrix}\lambda{\bf I}\_p^{-1} & {\bf 0} \\ {\bf 0} & {\bf 0} \end{pmatrix} \Bigg)^{-1}
 {\bf W}'{\bf y} \\
 = \Big\\\begin{pmatrix} {\bf X}'{\bf X} & {\bf X}'{\bf Z} \\
 {\bf Z}'{\bf X} & {\bf Z}'{\bf Z} \end{pmatrix} + 
