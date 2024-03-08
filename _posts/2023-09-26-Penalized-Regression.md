@@ -10,7 +10,7 @@ output:
 
 When teaching introductory linear regression, one of my favorite topics
 is “adjusted variable plots” or “added variable plots”. The basic idea
-is this: say you want to relate two sets of predictor variables, ***X***
+is this: say you want to relate two sets of predictor variables, $\bf X$
 and ***Z***, to a single response variable ***y***. One standard way to
 do this is through a multiple linear regression model, given in
 matrix/vector form by:
@@ -31,10 +31,12 @@ estimate for **β** as in the multiple linear regression model stated
 above.
 
 For the purpose of exploratory analysis, this is great news! We can
-simply: 1. Regress ***Z*** from ***X*** to produce ***X***\*, 2. Regress
-***y*** from ***X*** to produce $\bf y^\*$, then 3. Plot $\bf y^\*$
-versus ***X***\* to get a visual impression of the relationship between
-***y*** versus ***X***, while controlling for ***Z***.
+simply: 1. Regress ***Z*** from ***X*** to produce
+*X*<sup>\*</sup>
+, 2. Regress ***y*** from ***X*** to produce $\bf y^\*$, then 3. Plot
+$\bf y^\*$ versus ***X***\* to get a visual impression of the
+relationship between ***y*** versus ***X***, while controlling for
+***Z***.
 
 A few things might be revealed: \* If ***X*** and ***Z*** are highly
 correlated, then after controlling for ***Z*** we might see that ***X***
