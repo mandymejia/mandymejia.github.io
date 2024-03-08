@@ -243,12 +243,12 @@ and (1,2) blocks of $\bf A$, the inverse of the block matrix that
 appears above. Using standard formulas for block matrix inverses, we can
 obtain
 
-$\hat{\boldsymbol\beta} = {\bf A}\_{(1,1)}{\bf X}'{\bf y} + {\bf A}\_{(1,2)}{\bf Z}'{\bf y}$
+$\hat{\boldsymbol\beta} = {\bf A\_{11}X'y} + {\bf A\_{12} Z' y}$
 $= ({\bf X}'{\bf X} - {\bf X}'{\bf Z}({\bf Z}'{\bf Z})^{-1}{\bf Z}'{\bf X})^{-1}{\bf X}'{\bf y} - ({\bf X}'{\bf X} - {\bf X}'{\bf Z}({\bf Z}'{\bf Z})^{-1}{\bf Z}'{\bf X})^{-1}{\bf X}'{\bf Z}({\bf Z}'{\bf Z})^{-1}{\bf Z}'{\bf y}$
 $= ({\bf X}'{\bf X} - {\bf X}'{\bf H}{\bf X})^{-1}{\bf X}'{\bf y} - ({\bf X}'{\bf X} - {\bf X}'{\bf H}{\bf X})^{-1}{\bf X}'{\bf H}{\bf y}$
 $= ({\bf X}'{\bf X} - {\bf X}'{\bf H}{\bf X})^{-1}({\bf X}'{\bf y} - {\bf X}'{\bf H}{\bf y})$
 $= ({\bf X}({\bf I - H}){\bf X})^{-1}({\bf X}'({\bf I - H}){\bf y})$
-$= ({\bf \tilde{X}}{\bf \tilde{X}})^{-1}({\bf \tilde{X}}'{\bf \tilde{y}})$
+$= ({\bf \tilde{X}}'{\bf \tilde{X}})^{-1}({\bf \tilde{X}}'{\bf \tilde{y}})$
 $= \tilde{\boldsymbol\beta}$
 
 Voila, it works!
@@ -281,31 +281,18 @@ penalty on $\bf X$. Letting
 $\bf W := \begin{bmatrix} \bf X & \bf Z \end{bmatrix}$ again, we can
 write:
 
-$$
-\begin{pmatrix} \hat{\boldsymbol\beta}^R \\ \hat{\boldsymbol\gamma}^R \end{pmatrix}
-= \Bigg( {\bf W}'{\bf W} + 
-\begin{pmatrix}\lambda{\bf I}\_p^{-1} & {\bf 0} \\ {\bf 0} & {\bf 0} \end{pmatrix} \Bigg)^{-1}
-{\bf W}'{\bf y} \\
-= \Big\\\begin{pmatrix} {\bf X}'{\bf X} & {\bf X}'{\bf Z} \\
-{\bf Z}'{\bf X} & {\bf Z}'{\bf Z} \end{pmatrix} + 
-\begin{pmatrix}\lambda{\bf I}\_p^{-1} & {\bf 0} \\ {\bf 0} & {\bf 0} \end{pmatrix}\Big\\^{-1}
-\begin{pmatrix}{\bf X}'{\bf y} \\ {\bf Z}'{\bf y} \end{pmatrix} \\
-= \begin{pmatrix} {\bf X}'{\bf X} + \lambda{\bf I}\_p & {\bf X}'{\bf Z} \\
-{\bf Z}'{\bf X} & {\bf Z}'{\bf Z} \end{pmatrix} ^{-1}
-\begin{pmatrix}{\bf X}'{\bf y} \\ {\bf Z}'{\bf y} \end{pmatrix}
-$$
+$\begin{pmatrix} \hat{\boldsymbol\beta}^R \\ \hat{\boldsymbol\gamma}^R \end{pmatrix} = \Bigg( {\bf W}'{\bf W} + \begin{pmatrix}\lambda{\bf I}\_p^{-1} & {\bf 0} \\ {\bf 0} & {\bf 0} \end{pmatrix} \Bigg)^{-1} {\bf W}'{\bf y}$
+$= \Bigg(\begin{pmatrix} {\bf X}'{\bf X} & {\bf X}'{\bf Z} \\ {\bf Z}'{\bf X} & {\bf Z}'{\bf Z} \end{pmatrix} + \begin{pmatrix}\lambda{\bf I}\_p^{-1} & {\bf 0} \\ {\bf 0} & {\bf 0} \end{pmatrix}\Bigg)^{-1} \begin{pmatrix}{\bf X}'{\bf y} \\ {\bf Z}'{\bf y} \end{pmatrix}$
+$= \begin{pmatrix} {\bf X}'{\bf X} + \lambda{\bf I}\_p & {\bf X}'{\bf Z} \\ {\bf Z}'{\bf X} & {\bf Z}'{\bf Z} \end{pmatrix} ^{-1} \begin{pmatrix}{\bf X}'{\bf y} \\ {\bf Z}'{\bf y} \end{pmatrix}$
 
 Again we can use block matrix inverse formulas to obtain the estimator
 for **β**. Skipping some steps this time, we obtain
 
-$$
-\hat{\boldsymbol\beta}^R 
-= \Big(({\bf X}'{\bf X} + \lambda{\bf I}\_p) - {\bf X}'{\bf Z}({\bf Z}'{\bf Z})^{-1}{\bf Z}'{\bf X}\Big)^{-1}({\bf X}'{\bf y} - {\bf X}'{\bf Z}({\bf Z}'{\bf Z})^{-1}{\bf Z}'{\bf y}) \\
-= \Big(({\bf X}'{\bf X} + \lambda{\bf I}\_p) - {\bf X}'{\bf H}{\bf X}\Big)^{-1}({\bf X}'{\bf y} - {\bf X}'{\bf H}{\bf y}) \\
-= \Big({\bf X}'{\bf X} - {\bf X}'{\bf H}{\bf X} + \lambda{\bf I}\_p\Big)^{-1}({\bf X}'{\bf y} - {\bf X}'{\bf H}{\bf y}) \\
-= \Big({\bf X}'({\bf I - H}){\bf X} + \lambda{\bf I}\_p\Big)^{-1}({\bf X}'({\bf I - H}){\bf y}) \\
-= \Big({\bf \tilde{X}}'{\bf \tilde{X}} + \lambda{\bf I}\_p\Big)^{-1}({\bf \tilde{X}}'{\bf \tilde{y}}) 
-$$
+$\hat{\boldsymbol\beta}^R = \Big(({\bf X}'{\bf X} + \lambda{\bf I}\_p) - {\bf X}'{\bf Z}({\bf Z}'{\bf Z})^{-1}{\bf Z}'{\bf X}\Big)^{-1}({\bf X}'{\bf y} - {\bf X}'{\bf Z}({\bf Z}'{\bf Z})^{-1}{\bf Z}'{\bf y})$
+$= \Big(({\bf X}'{\bf X} + \lambda{\bf I}\_p) - {\bf X}'{\bf H}{\bf X}\Big)^{-1}({\bf X}'{\bf y} - {\bf X}'{\bf H}{\bf y})$
+$= \Big({\bf X}'{\bf X} - {\bf X}'{\bf H}{\bf X} + \lambda{\bf I}\_p\Big)^{-1}({\bf X}'{\bf y} - {\bf X}'{\bf H}{\bf y})$
+$= \Big({\bf X}'({\bf I - H}){\bf X} + \lambda{\bf I}\_p\Big)^{-1}({\bf X}'({\bf I - H}){\bf y})$
+$= \Big({\bf \tilde{X}}'{\bf \tilde{X}} + \lambda{\bf I}\_p\Big)^{-1}({\bf \tilde{X}}'{\bf \tilde{y}})$
 
 Success! The last line shows that the estimate for **β** in the model
 including $\bf Z$ is the same as what we would get if we related
@@ -321,10 +308,13 @@ focusing only on the variables of interest, it is important to regress
 the confounders out from both $\bf X$ and $\bf y$. It is somewhat common
 to see $\bf Z$ only regressed from $\bf y$, disregarding the potential
 influence of $\bf Z$ on $\bf X$. This is a process known as “sequential
-processing” that can have unintended consequences. In the case of
-*prediction* of $\bf y$ based on $\bf X$, failing to adjust $\bf X$ for
-$\bf Z$ as well can lead to **attenuated prediction coefficients** and
-**worse prediction accuracy**. Whether you are using standard OLS or
-penalized regression in a high-dimensional setting, if you adjust both
-$\bf y$ and $\bf X$ for $\bf Z$, you can rest assured that it is fully
-equivalent to including $\bf Z$ as a confounder in your model.
+processing” that can have unintended consequences.
+
+In the case of *prediction* of $\bf y$ based on $\bf X$, failing to
+adjust $\bf X$ for $\bf Z$ as well can lead to *attenuated prediction
+coefficients* and ultimately *worse prediction accuracy*.
+
+Whether you are using standard OLS or penalized regression in a
+high-dimensional setting, if you adjust both $\bf y$ and $\bf X$ for
+$\bf Z$, you can rest assured that it is fully equivalent to including
+$\bf Z$ as a confounder in your model.
