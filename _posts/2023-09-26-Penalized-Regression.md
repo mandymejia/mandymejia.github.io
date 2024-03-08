@@ -31,25 +31,34 @@ estimate for **β** as in the multiple linear regression model stated
 above.
 
 For the purpose of exploratory analysis, this is great news! We can
-simply: 1. Regress ***Z*** from ***X*** to produce
-*X*<sup>\*</sup>
-, 2. Regress ***y*** from ***X*** to produce $\bf y^\*$, then 3. Plot
-$\bf y^\*$ versus ***X***\* to get a visual impression of the
-relationship between ***y*** versus ***X***, while controlling for
-***Z***.
+simply:
 
-A few things might be revealed: \* If ***X*** and ***Z*** are highly
-correlated, then after controlling for ***Z*** we might see that ***X***
-does not add much. (Conversely, if we naively plotted ***X*** against
-***y*** **without** adjusting for ***Z***, the “marginal” relationship
-may appear strong, but this could just be driven by ***Z***.)  
-\* We might see non-linear relationships between ***X*** and ***y***
-more clearly, which we should account for in the model to avoid a
-misspecified model.  
-\* We might see evidence of interactions between variables.
+1.  Regress ***Z*** from ***X*** to produce
+    *X*<sup>\*</sup>
+    ,
 
-In any case, the ability to perform exploratory analysis between ***X***
-and y, while accounting for ***Z***, is pretty convenient.
+2.  Regress ***y*** from ***X*** to produce $\bf y^\*$, then
+
+3.  Plot $\bf y^\*$ versus ***X***\* to get a visual impression of the
+    relationship between ***y*** versus ***X***, while controlling for
+    ***Z***.
+
+A few things might be revealed:
+
+-   If ***X*** and ***Z*** are highly correlated, then after controlling
+    for ***Z*** we might see that ***X*** does not add much.
+    (Conversely, if we naively plotted ***X*** against ***y***
+    **without** adjusting for ***Z***, the “marginal” relationship may
+    appear strong, but this could just be driven by ***Z***.)
+
+-   We might see non-linear relationships between ***X*** and ***y***
+    more clearly, which we should account for in the model to avoid a
+    misspecified model.
+
+-   We might see evidence of interactions between variables.
+
+In any case, the ability to perform exploratory analysis between $\bf X$
+and $\bf y$, while accounting for ***Z***, is pretty convenient.
 
 # Simulated Data Examples
 
