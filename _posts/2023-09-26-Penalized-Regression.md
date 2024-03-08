@@ -213,9 +213,7 @@ in the equation above.
 Now that we have our adjusted variables $\bf y^\*$ and $\bf X^\*$, we
 can relate them through the model
 
-$$
-{\bf y}^\* = {\bf X}^\*\boldsymbol\beta + \boldsymbol\epsilon
-$$
+${\bf y^\*} = {\bf X}^\*\boldsymbol\beta + \boldsymbol\epsilon$
 
 The goal is to show that the OLS estimate for **β** in this model is
 exactly equal to the OLS estimate for **β** in the earlier model with
@@ -224,9 +222,7 @@ this model relating $\bf y^\*$ to $\bf X^\*$. We will use the fact that
 $\bf I - H$ is symmetric and idempotent, meaning that
 $\bf (I - H)(I - H) = (I - H)$.
 
-$$
-\hat{\boldsymbol\beta}^\* = ({\bf {X^\*}'{X^\*}})^{-1}{\bf {X^\*}'y^\*} = ({\bf X}'({\bf I - H}){\bf X})^{-1}{\bf X}'({\bf I - H}){\bf y}
-$$
+$\hat{\boldsymbol\beta}^\* = ({\bf {X^\*}'{X^\*}})^{-1}{\bf {X^\*}'y^\*} = ({\bf X}'({\bf I - H}){\bf X})^{-1}{\bf X}'({\bf I - H}){\bf y}$
 
 That was the easy part. :) Now let’s work out the OLS estimate for **β**
 in the earlier model relating $\bf y$ to $\bf X$ and $\bf Z$.
