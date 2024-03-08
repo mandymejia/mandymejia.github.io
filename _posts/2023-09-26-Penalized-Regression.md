@@ -213,7 +213,9 @@ in the equation above.
 Now that we have our adjusted variables $\bf y^\*$ and $\bf X^\*$, we
 can relate them through the model
 
-${\bf y^\*} = {\bf X}^\*\boldsymbol\beta + \boldsymbol\epsilon$
+$$
+{\bf \tilde{y}} = {\bf \tilde{X}}\boldsymbol\beta + \boldsymbol\epsilon
+$$
 
 The goal is to show that the OLS estimate for **β** in this model is
 exactly equal to the OLS estimate for **β** in the earlier model with
@@ -225,11 +227,12 @@ $\bf (I - H)(I - H) = (I - H)$.
 $\hat{\boldsymbol\beta}^\* = ({\bf {X^\*}'{X^\*}})^{-1}{\bf {X^\*}'y^\*} = ({\bf X}'({\bf I - H}){\bf X})^{-1}{\bf X}'({\bf I - H}){\bf y}$
 
 That was the easy part. :) Now let’s work out the OLS estimate for **β**
-in the earlier model relating $\bf y$ to $\bf X$ and $\bf Z$.
+in the earlier model relating $\bf y$ to $\bf X$ and $\bf Z$. Let
+$\bf W := \begin{bmatrix} \bf X & \bf Z \end{bmatrix}$
 
 $$
 \begin{pmatrix} \hat{\boldsymbol\beta} \\ \hat{\boldsymbol\gamma} \end{pmatrix}
-= \Big(\left\[{\bf X}{\bf Z}\right\]'\left\[{\bf X}{\bf Z}\right\]\Big)^{-1}\left\[{\bf X}{\bf Z}\right\]'{\bf y} 
+= \Big({\bf W}'{\bf W}\Big)^{-1}{\bf W}'{\bf y} 
 = \begin{pmatrix} {\bf X}'{\bf X} & {\bf X}'{\bf Z} \\
 {\bf Z}'{\bf X} & {\bf Z}'{\bf Z} \end{pmatrix}^{-1}
 \begin{pmatrix}{\bf X}'{\bf y} \\ {\bf Z}'{\bf y} \end{pmatrix} =: {\bf A}\begin{pmatrix}{\bf X}'{\bf y} \\ {\bf Z}'{\bf y} \end{pmatrix} 
