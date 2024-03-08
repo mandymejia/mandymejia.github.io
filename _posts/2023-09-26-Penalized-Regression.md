@@ -219,7 +219,7 @@ $\bf I - H$ is symmetric and idempotent, meaning that
 $\bf (I - H)(I - H) = (I - H)$.
 
 $$
-\hat{\boldsymbol\beta}^\* = ({\bf X^\*}'{\bf X}^\*)^{-1}{\bf X^\*}'{{\bf y}^\*} = ({\bf X}'({\bf I - H}){\bf X})^{-1}{\bf X}'({\bf I - H}){{\bf y}}
+\hat{\boldsymbol\beta}^\* = ({\bf {X^\*}'{X^\*}})^{-1}{\bf {X^\*}'y^\*} = ({\bf X}'({\bf I - H}){\bf X})^{-1}{\bf X}'({\bf I - H}){\bf y}
 $$
 
 That was the easy part. :) Now let’s work out the OLS estimate for **β**
@@ -251,8 +251,9 @@ If we fit a model relating a high-dimensional set of predictors $\bf X$
 to $\bf y$ with either ridge or LASSO, the estimator for *β* is given by
 
 $$
-\hat{\boldsymbol\beta} = ({{\bf X}}'{\bf X} + \lambda{\bf I})^{-1}{{\bf X}}'{{\bf y}}
+\hat{\boldsymbol\beta} = (\bf {X'X + \lambda  I})^{-1}{\bf X'y}
 $$
+
 where *λ* is a penalty parameter that is typically determined via
 cross-validation. If we also include confounders $\bf Z$ in the model,
 we can avoid including them in the penalization by setting *λ* = 0 for
