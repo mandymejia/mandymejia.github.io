@@ -8,8 +8,6 @@ output:
     preserve_yaml: true
 ---
 
-# Controlling for confounders in OLS
-
 When teaching introductory linear regression, one of my favorite topics
 is “adjusted variable plots” or “added variable plots”. The basic idea
 is this: say you want to relate two sets of predictor variables, $\bf X$
