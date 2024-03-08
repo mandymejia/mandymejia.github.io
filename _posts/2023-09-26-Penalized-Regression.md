@@ -11,7 +11,7 @@ output:
 When teaching introductory linear regression, one of my favorite topics
 is “adjusted variable plots” or “added variable plots”. The basic idea
 is this: say you want to relate two sets of predictor variables, $\bf X$
-and ***Z***, to a single response variable ***y***. One standard way to
+and $\bf Z$, to a single response variable $\bf y$. One standard way to
 do this is through a multiple linear regression model, given in
 matrix/vector form by:
 
@@ -19,46 +19,44 @@ $$
 {\bf y} = {\bf X}\boldsymbol\beta + {\bf Z}\boldsymbol\gamma + \boldsymbol\epsilon 
 $$
 
-But let’s say that ***Z*** represents some control variables we
+But let’s say that $\bf Z$ represents some control variables we
 definitely need to account for (e.g. age, sex), and we want to explore
-the nature of the relationship between ***X*** and ***y***, accounting
-for ***Z***. Or perhaps we want to fit a model relating ***y*** to just
-***X***, controlling for ***Z*** by “regressing it out” beforehand. As
+the nature of the relationship between $\bf X$ and $\bf y$, accounting
+for $\bf Z$. Or perhaps we want to fit a model relating $\bf y$ to just
+$\bf X$, controlling for $\bf Z$ by “regressing it out” beforehand. As
 it turns out, you can prove mathematically (see below) that if you
-regress out ***Z*** from both ***X*** and ***y*** then relate the
-adjusted ***y*** to the adjusted ***X***, you get the exact same
+regress out $\bf Z$ from both $\bf X$ and $\bf y$ then relate the
+adjusted $\bf y$ to the adjusted $\bf X$, you get the exact same
 estimate for **β** as in the multiple linear regression model stated
 above.
 
 For the purpose of exploratory analysis, this is great news! We can
 simply:
 
-1.  Regress ***Z*** from ***X*** to produce
-    *X*<sup>\*</sup>
-    ,
+1.  Regress $\bf Z$ from $\bf X$ to produce $\bf X^\*$,
 
-2.  Regress ***y*** from ***X*** to produce $\bf y^\*$, then
+2.  Regress $\bf y$ from $\bf X$ to produce $\bf y^\*$, then
 
-3.  Plot $\bf y^\*$ versus ***X***\* to get a visual impression of the
-    relationship between ***y*** versus ***X***, while controlling for
-    ***Z***.
+3.  Plot $\bf y^\*$ versus $\bf X^\*$ to get a visual impression of the
+    relationship between $\bf y$ versus $\bf X$, while controlling for
+    $\bf Z$.
 
 A few things might be revealed:
 
--   If ***X*** and ***Z*** are highly correlated, then after controlling
-    for ***Z*** we might see that ***X*** does not add much.
-    (Conversely, if we naively plotted ***X*** against ***y***
-    **without** adjusting for ***Z***, the “marginal” relationship may
-    appear strong, but this could just be driven by ***Z***.)
+-   If $\bf X$ and $\bf Z$ are highly correlated, then after controlling
+    for $\bf Z$ we might see that $\bf X$ does not add much. (Whereas if
+    we naively plotted $\bf X$ against $\bf y$ **without** adjusting for
+    $\bf Z$, the “marginal” relationship may appear strong, but this
+    could just be driven by $\bf Z$.)
 
--   We might see non-linear relationships between ***X*** and ***y***
+-   We might see non-linear relationships between $\bf X$ and $\bf y$
     more clearly, which we should account for in the model to avoid a
     misspecified model.
 
 -   We might see evidence of interactions between variables.
 
 In any case, the ability to perform exploratory analysis between $\bf X$
-and $\bf y$, while accounting for ***Z***, is pretty convenient.
+and $\bf y$, while accounting for $\bf Z$, is pretty convenient.
 
 # Simulated Data Examples
 
@@ -141,7 +139,7 @@ we only visualize the marginal relationship, we will get an overly
 optimistic picture of the relationship between *X* and *Y* (assuming we
 plan to include *Z* in the model). By contrast, the adjusted
 relationship plot adjusts for *Z* so we can get an accurate visual
-picture of the relationship between *X* and *y*, accounting for *Z*.
+picture of the relationship between *X* and *Y*, accounting for *Z*.
 
 ## Example 2
 
@@ -195,25 +193,25 @@ grid.arrange(p1, p2, nrow=1)
 # Proof of Adjusted Variables in OLS
 
 We can show mathematically that if we first \`\`adjust’’ for a set of
-variables ***Z***, the marginal relationship between the adjusted
-versions of ***X*** and ***y*** is exactly the same as the relationship
-between the two when ***Z*** is included in the model. Let $\bf H$
-denote the “hat matrix” when the design matrix is ***Z***, namely
+variables $\bf Z$, the marginal relationship between the adjusted
+versions of $\bf X$ and $\bf y$ is exactly the same as the relationship
+between the two when $\bf Z$ is included in the model. Let $\bf H$
+denote the “hat matrix” when the design matrix is $\bf Z$, namely
 
 $$
 {\bf H} = {\bf Z}({\bf Z'Z})^{-1}{\bf Z'}
 $$
 
-Recall that $\bf H$ “puts the hat on” ***y*** when predicting ***y***
-from ***Z***, i.e. $\bf\hat{y} = \bf Hy$. The residuals
+Recall that $\bf H$ “puts the hat on” $\bf y$ when predicting $\bf y$
+from $\bf Z$, i.e. $\bf\hat{y} = \bf Hy$. The residuals
 ${\bf\hat{y}} - {\bf y} = \bf (I-H)y$ are what we mean when we say
-“***y*** adjusted for ***Z***”, which we are calling $\bf y^\*$. So
+“$\bf y$ adjusted for $\bf Z$”, which we are calling $\bf y^\*$. So
 $\bf y^\* = (I-H)y$, and $\bf X^\* = (I-H)X$, where in both cases
-$\bf H$ is the hat matrix associated with design matrix ***Z***, given
+$\bf H$ is the hat matrix associated with design matrix $\bf Z$, given
 in the equation above.
 
-Now that we have our adjusted variables $\bf y^\*$ and ***X***\*, we can
-relate them through the model
+Now that we have our adjusted variables $\bf y^\*$ and $\bf X^\*$, we
+can relate them through the model
 
 $$
 {\bf y}^\* = {\bf X}^\*\boldsymbol\beta + \boldsymbol\epsilon
@@ -221,8 +219,8 @@ $$
 
 The goal is to show that the OLS estimate for **β** in this model is
 exactly equal to the OLS estimate for **β** in the earlier model with
-***X*** and ***Z***. First, let’s work out the OLS estimate for **β** in
-this model relating $\bf y^\*$ to ***X***\*. We will use the fact that
+$\bf X$ and $\bf Z$. First, let’s work out the OLS estimate for **β** in
+this model relating $\bf y^\*$ to $\bf X^\*$. We will use the fact that
 $\bf I - H$ is symmetric and idempotent, meaning that
 $\bf (I - H)(I - H) = (I - H)$.
 
@@ -231,7 +229,7 @@ $$
 $$
 
 That was the easy part. :) Now let’s work out the OLS estimate for **β**
-in the earlier model relating ***y*** to ***X*** and ***Z***.
+in the earlier model relating $\bf y$ to $\bf X$ and $\bf Z$.
 
 $$
 \begin{pmatrix} \hat{\boldsymbol\beta} \\ \hat{\boldsymbol\gamma} \end{pmatrix}
@@ -240,6 +238,7 @@ $$
 {\bf Z}'{\bf X} & {\bf Z}'{\bf Z} \end{pmatrix}^{-1}
 \begin{pmatrix}{\bf X}'{\bf y} \\ {\bf Z}'{\bf y} \end{pmatrix} =: {\bf A}\begin{pmatrix}{\bf X}'{\bf y} \\ {\bf Z}'{\bf y} \end{pmatrix} 
 $$
+
 Since we are mainly interested in **β**, we need to work out the (1,1)
 and (1,2) blocks of $\bf A$, the inverse of the block matrix that
 appears above. Using standard formulas for block matrix inverses, we can
@@ -249,36 +248,37 @@ Voila, it works!
 
 # Adjusting for Variables in Penalized Regression
 
-In many applications including my personal research, ***X*** is
+In many applications including my personal research, $\bf X$ is
 high-dimensional with the number of columns/variables *p* much greater
 than the number of rows/observations *n*. In this case, it’s common to
 use penalized regression techniques like ridge regression or LASSO. Does
 the theory behind adjusted variable plots hold up in this context?
 
-If we fit a model relating a high-dimensional set of predictors ***X***
-to ***y*** with either ridge or LASSO, the estimator for *β* is given by
+If we fit a model relating a high-dimensional set of predictors $\bf X$
+to $\bf y$ with either ridge or LASSO, the estimator for **β** is given
+by
 
 $$
 \hat{\boldsymbol\beta} = (\bf {X'X + \lambda  I})^{-1}{\bf X'y}
 $$
 
 where *λ* is a penalty parameter that is typically determined via
-cross-validation. If we also include confounders ***Z*** in the model,
+cross-validation. If we also include confounders $\bf Z$ in the model,
 we can avoid including them in the penalization by setting *λ* = 0 for
 those variables. So our penalty matrix, rather than $\lambda \bf I$,
 becomes a block-diagonal matrix with $\lambda \bf I$ defining the
 upper-left block and zeros everywhere else.
 
 As before, we can work out the estimate for **β** in the case of a
-penalty on ***X***:
+penalty on $\bf X$:
 
 Again we can use block matrix inverse formulas to obtain the estimator
 for **β**. Skipping some steps this time, we obtain
 
 Success! The last line shows that the estimate for **β** in the model
-including ***Z*** is the same as what we would get if we related
-$\tilde{\bf y}$ (***y*** adjusted for ***Z***) against $\tilde{\bf X}$
-(***X*** adjusted for ***Z***). Hence, the theory of adjusted variable
+including $\bf Z$ is the same as what we would get if we related
+$\tilde{\bf y}$ ($\bf y$ adjusted for $\bf Z$) against $\tilde{\bf X}$
+($\bf X$ adjusted for $\bf Z$). Hence, the theory of adjusted variable
 plots in OLS holds for penalized regression methods like LASSO and
 ridge.
 
@@ -286,13 +286,13 @@ ridge.
 
 When “adjusting for” confounding variables prior to fitting a model
 focusing only on the variables of interest, it is important to regress
-the confounders out from both ***X*** and ***y***. It is somewhat common
-to see ***Z*** only regressed from ***y***, disregarding the potential
-influence of ***Z*** on ***X***. This is a process known as “sequential
+the confounders out from both $\bf X$ and $\bf y$. It is somewhat common
+to see $\bf Z$ only regressed from $\bf y$, disregarding the potential
+influence of $\bf Z$ on $\bf X$. This is a process known as “sequential
 processing” that can have unintended consequences. In the case of
-*prediction* of ***y*** based on ***X***, failing to adjust ***X*** for
-***Z*** as well can lead to **attenuated prediction coefficients** and
+*prediction* of $\bf y$ based on $\bf X$, failing to adjust $\bf X$ for
+$\bf Z$ as well can lead to **attenuated prediction coefficients** and
 **worse prediction accuracy**. Whether you are using standard OLS or
 penalized regression in a high-dimensional setting, if you adjust both
-***y*** and ***X*** for ***Z***, you can rest assured that it is fully
-equivalent to including ***Z*** as a confounder in your model.
+$\bf y$ and $\bf X$ for $\bf Z$, you can rest assured that it is fully
+equivalent to including $\bf Z$ as a confounder in your model.
