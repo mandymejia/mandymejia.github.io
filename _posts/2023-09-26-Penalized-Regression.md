@@ -253,7 +253,7 @@ $= \tilde{\boldsymbol\beta}$
 
 Voila, it works!
 
-# Adjusting for Variables in Penalized Regression
+# Adjusted Variables in Penalized Regression
 
 In many applications including my personal research, $\bf X$ is
 high-dimensional with the number of columns/variables *p* much greater
@@ -318,7 +318,7 @@ $\tilde{\bf y}$ ($\bf y$ adjusted for $\bf Z$) against $\tilde{\bf X}$
 plots in OLS holds for penalized regression methods like LASSO and
 ridge.
 
-## Take home message
+# Take home message
 
 When “adjusting for” confounding variables prior to fitting a model
 focusing only on the variables of interest, it is important to regress

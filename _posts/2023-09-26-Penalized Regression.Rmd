@@ -181,7 +181,7 @@ Since we are mainly interested in \(\boldsymbol \beta\), we need to work out the
 
 Voila, it works!
 
-# Adjusting for Variables in Penalized Regression
+# Adjusted Variables in Penalized Regression
 
 In many applications including my personal research, \(\bf X\) is high-dimensional with the number of columns/variables $p$ much greater than the number of rows/observations $n$. In this case, it's common to use penalized regression techniques like ridge regression or LASSO. Does the theory behind adjusted variable plots hold up in this context? 
 
@@ -237,7 +237,7 @@ Again we can use block matrix inverse formulas to obtain the estimator for \(\bo
 Success! The last line shows that the estimate for \(\boldsymbol \beta\) in the model including \(\bf Z\) is the same as what we would get if we related $\tilde{\bf y}$ (\(\bf y\) adjusted for \(\bf Z\)) against $\tilde{\bf X}$ (\(\bf X\) adjusted for \(\bf Z\)). Hence, the theory of adjusted variable plots in OLS holds for penalized regression methods like LASSO and ridge. 
 
 
-## Take home message
+# Take home message
 
 When "adjusting for" confounding variables prior to fitting a model focusing only on the variables of interest, it is important to regress the confounders out from both \(\bf X\) and \(\bf y\).  It is somewhat common to see \(\bf Z\) only regressed from \(\bf y\), disregarding the potential influence of \(\bf Z\) on \(\bf X\). This is a process known as "sequential processing" that can have unintended consequences. 
 
