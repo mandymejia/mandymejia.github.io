@@ -229,7 +229,7 @@ in the earlier model relating $\bf y$ to $\bf X$ and $\bf Z$.
 
 $$
 \begin{pmatrix} \hat{\boldsymbol\beta} \\ \hat{\boldsymbol\gamma} \end{pmatrix}
-= \Big(\[{\bf X}{\bf Z}\]'\[{\bf X}{\bf Z}\]\Big)^{-1}\[{\bf X}{\bf Z}\]'{\bf y} 
+= \Big(\left\[{\bf X}{\bf Z}\right\]'\left\[{\bf X}{\bf Z}\right\]\Big)^{-1}\left\[{\bf X}{\bf Z}\right\]'{\bf y} 
 = \begin{pmatrix} {\bf X}'{\bf X} & {\bf X}'{\bf Z} \\
 {\bf Z}'{\bf X} & {\bf Z}'{\bf Z} \end{pmatrix}^{-1}
 \begin{pmatrix}{\bf X}'{\bf y} \\ {\bf Z}'{\bf y} \end{pmatrix} =: {\bf A}\begin{pmatrix}{\bf X}'{\bf y} \\ {\bf Z}'{\bf y} \end{pmatrix} 
