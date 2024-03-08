@@ -11,8 +11,8 @@ output:
 # Controlling for confounders in OLS
 
 When teaching introductory linear regression, one of my favorite topics
-is adjusted variable plots or “added variable plots”. The basic idea is
-this: say you want to relate two sets of predictor variables, $\bf X$
+is “adjusted variable plots” or “added variable plots”. The basic idea
+is this: say you want to relate two sets of predictor variables, $\bf X$
 and $\bf Z$, to a single response variable $\bf y$. One standard way to
 do this is through a multiple linear regression model, given in
 matrix/vector form by:
@@ -219,7 +219,7 @@ $\bf I - H$ is symmetric and idempotent, meaning that
 $\bf (I - H)(I - H) = (I - H)$.
 
 $$
-\hat{\boldsymbol\beta}^\* = ({{\bf X}^\*}'{\bf X}^\*)^{-1}{{\bf X}^\*}'{{\bf y}^\*} = ({\bf X}'({\bf I - H}){\bf X})^{-1}{{\bf X}}'({\bf I - H}){{\bf y}}
+\hat{\boldsymbol\beta}^\* = ({\bf X^\*}'{\bf X}^\*)^{-1}{\bf X^\*}'{{\bf y}^\*} = ({\bf X}'({\bf I - H}){\bf X})^{-1}{\bf X}'({\bf I - H}){{\bf y}}
 $$
 
 That was the easy part. :) Now let’s work out the OLS estimate for **β**
