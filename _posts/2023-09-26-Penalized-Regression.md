@@ -279,16 +279,18 @@ becomes a block-diagonal matrix with $\lambda \bf I$ defining the
 upper-left block and zeros everywhere else.
 
 As before, we can work out the estimate for **β** in the case of a
-penalty on $\bf X$:
+penalty on $\bf X$. Letting
+$\bf W := \begin{bmatrix} \bf X & \bf Z \end{bmatrix}$ again, we can
+write:
 
 $$
 \begin{pmatrix} \hat{\boldsymbol\beta}^R \\ \hat{\boldsymbol\gamma}^R \end{pmatrix}
-= \left\\\[{\bf X}{\bf Z}\]'\[{\bf X}{\bf Z}\] + 
-\begin{pmatrix}\lambda{\bf I}\_p^{-1} & {\bf 0} \\ {\bf 0} & {\bf 0} \end{pmatrix}\right\\^{-1}
-\[{\bf X}{\bf Z}\]'{\bf y} \\
-= \left\\\begin{pmatrix} {\bf X}'{\bf X} & {\bf X}'{\bf Z} \\
+= \Big\\ {\bf W}'{\bf W} + 
+\begin{pmatrix}\lambda{\bf I}\_p^{-1} & {\bf 0} \\ {\bf 0} & {\bf 0} \end{pmatrix}\Big\\^{-1}
+{\bf W}'{\bf y} \\
+= \Big\\\begin{pmatrix} {\bf X}'{\bf X} & {\bf X}'{\bf Z} \\
 {\bf Z}'{\bf X} & {\bf Z}'{\bf Z} \end{pmatrix} + 
-\begin{pmatrix}\lambda{\bf I}\_p^{-1} & {\bf 0} \\ {\bf 0} & {\bf 0} \end{pmatrix}\right\\^{-1}
+\begin{pmatrix}\lambda{\bf I}\_p^{-1} & {\bf 0} \\ {\bf 0} & {\bf 0} \end{pmatrix}\Big\\^{-1}
 \begin{pmatrix}{\bf X}'{\bf y} \\ {\bf Z}'{\bf y} \end{pmatrix} \\
 = \begin{pmatrix} {\bf X}'{\bf X} + \lambda{\bf I}\_p & {\bf X}'{\bf Z} \\
 {\bf Z}'{\bf X} & {\bf Z}'{\bf Z} \end{pmatrix} ^{-1}
@@ -300,11 +302,11 @@ for **β**. Skipping some steps this time, we obtain
 
 $$
 \hat{\boldsymbol\beta}^R 
-= \left(({\bf X}'{\bf X} + \lambda{\bf I}\_p) - {\bf X}'{\bf Z}({\bf Z}'{\bf Z})^{-1}{\bf Z}'{\bf X}\right)^{-1}({\bf X}'{\bf y} - {\bf X}'{\bf Z}({\bf Z}'{\bf Z})^{-1}{\bf Z}'{\bf y}) \\
-= \left(({\bf X}'{\bf X} + \lambda{\bf I}\_p) - {\bf X}'{\bf H}{\bf X}\right)^{-1}({\bf X}'{\bf y} - {\bf X}'{\bf H}{\bf y}) \\
-= \left({\bf X}'{\bf X} - {\bf X}'{\bf H}{\bf X} + \lambda{\bf I}\_p\right)^{-1}({\bf X}'{\bf y} - {\bf X}'{\bf H}{\bf y}) \\
-= \left({\bf X}'({\bf I - H}){\bf X} + \lambda{\bf I}\_p\right)^{-1}({\bf X}'({\bf I - H}){\bf y}) \\
-= \left({\bf \tilde{X}}'{\bf \tilde{X}} + \lambda{\bf I}\_p\right)^{-1}({\bf \tilde{X}}'{\bf \tilde{y}}) 
+= \Big(({\bf X}'{\bf X} + \lambda{\bf I}\_p) - {\bf X}'{\bf Z}({\bf Z}'{\bf Z})^{-1}{\bf Z}'{\bf X}\Big)^{-1}({\bf X}'{\bf y} - {\bf X}'{\bf Z}({\bf Z}'{\bf Z})^{-1}{\bf Z}'{\bf y}) \\
+= \Big(({\bf X}'{\bf X} + \lambda{\bf I}\_p) - {\bf X}'{\bf H}{\bf X}\Big)^{-1}({\bf X}'{\bf y} - {\bf X}'{\bf H}{\bf y}) \\
+= \Big({\bf X}'{\bf X} - {\bf X}'{\bf H}{\bf X} + \lambda{\bf I}\_p\Big)^{-1}({\bf X}'{\bf y} - {\bf X}'{\bf H}{\bf y}) \\
+= \Big({\bf X}'({\bf I - H}){\bf X} + \lambda{\bf I}\_p\Big)^{-1}({\bf X}'({\bf I - H}){\bf y}) \\
+= \Big({\bf \tilde{X}}'{\bf \tilde{X}} + \lambda{\bf I}\_p\Big)^{-1}({\bf \tilde{X}}'{\bf \tilde{y}}) 
 $$
 
 Success! The last line shows that the estimate for **β** in the model
