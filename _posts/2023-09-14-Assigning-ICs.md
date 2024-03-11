@@ -25,5 +25,22 @@ been experimenting with this for a while, and we finally have a
 procedure that works pretty well. In this post, I will describe our
 approach and show some examples.
 
+If you happen to be working with the Human Connectome Project group ICA
+at the 25- or 100-component resolution, this recent
+[preprint](https://arxiv.org/abs/2311.03791) describes the IC assignment
+method and reports the final IC network labels. Please cite that paper
+if you use those assignments or adopt our methodology. All of the
+figures shown below are generated using our our ciftiTools R package,
+which is freely available on Github and CRAN. Links available at
+[statmindlab.com/software](https://www.statmindlab.com/software). If you
+use ciftiTools, please cite Damon Pham’s
+[paper](https://www.sciencedirect.com/science/article/pii/S1053811922000076)
+describing and illustrating the software.
+
+Here we are attempting to match our ICs to the well-known 17 cortical
+networks from Yeo et al. (2011) and the Freesurfer subcortical parcels.
+However, the procedure described below should work well for other sets
+of networks/regions.
+
 Read the rest of this post on my old blog at
 <https://mandymejia.wordpress.com/2023/09/14/assigning-independent-components-to-canonical-brain-networks/>.
