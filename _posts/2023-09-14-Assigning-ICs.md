@@ -42,5 +42,7 @@ cortical networks and the Freesurfer subcortical parcels. However, the
 procedure described below should work well for other sets of
 networks/regions.
 
-Read the rest of this post on my old blog at
-<https://mandymejia.wordpress.com/2023/09/14/assigning-independent-components-to-canonical-brain-networks/>.
+…
+
+**Read the rest of this post on my old blog at
+<https://mandymejia.wordpress.com/2023/09/14/assigning-independent-components-to-canonical-brain-networks/>.**
