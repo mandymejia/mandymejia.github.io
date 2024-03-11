@@ -37,10 +37,10 @@ use ciftiTools, please cite Damon Pham’s
 [paper](https://www.sciencedirect.com/science/article/pii/S1053811922000076)
 describing and illustrating the software.
 
-Here we are attempting to match our ICs to the well-known 17 cortical
-networks from Yeo et al. (2011) and the Freesurfer subcortical parcels.
-However, the procedure described below should work well for other sets
-of networks/regions.
+Here we are attempting to match our ICs to the well-known 17 Yeo
+cortical networks and the Freesurfer subcortical parcels. However, the
+procedure described below should work well for other sets of
+networks/regions.
 
 Read the rest of this post on my old blog at
 <https://mandymejia.wordpress.com/2023/09/14/assigning-independent-components-to-canonical-brain-networks/>.
