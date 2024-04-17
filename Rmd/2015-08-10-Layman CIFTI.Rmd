@@ -14,9 +14,7 @@ knitr::opts_chunk$set(fig.path = "images/")
 knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE)
 ```
 
-## Update 4/6/2022:
-
-Check out our ciftiTools R package, available via [CRAN](https://cran.r-project.org/web/packages/ciftiTools/index.html) and [Github](https://github.com/mandymejia/ciftiTools)!
+*Update 4/6/2022:* Check out our ciftiTools R package, available via [CRAN](https://cran.r-project.org/web/packages/ciftiTools/index.html) and [Github](https://github.com/mandymejia/ciftiTools)!
 
 `install.packages("ciftiTools") #install from CRAN`
 
@@ -28,9 +26,7 @@ Pham, D., Muschelli, J., & Mejia, A. (2022). ciftiTools: A package for reading, 
 
 ----
 
-## Update Fall 2015:
-
-[Here](https://mvpa.blogspot.com/2014/03/nifti-cifti-gifti-in-hcp-and-workbench.html) is another nice intro to CIFTI files, by Jo Etzel at WashU.
+*Update Fall 2015:* [Here](https://mvpa.blogspot.com/2014/03/nifti-cifti-gifti-in-hcp-and-workbench.html) is another nice intro to CIFTI files, by Jo Etzel at WashU.
 
 
 ----
