@@ -11,16 +11,12 @@ output:
 *Update 4/6/2022:* Check out our ciftiTools R package, available via
 [CRAN](https://cran.r-project.org/web/packages/ciftiTools/index.html)
 and [Github](https://github.com/mandymejia/ciftiTools)!
-
 `install.packages("ciftiTools") #install from CRAN`
-
 `devtools::install_github("mandymejia/ciftiTools") #install from GitHub`
-
-We also have a paper about it out in **NeuroImage**:
-
-Pham, D., Muschelli, J., & Mejia, A. (2022). ciftiTools: A package for
-reading, writing, visualizing, and manipulating CIFTI files in R.
-NeuroImage, 118877. <https://doi.org/10.1016/j.neuroimage.2022.118877>
+We also have a paper about it out in **NeuroImage**: Pham, D.,
+Muschelli, J., & Mejia, A. (2022). ciftiTools: A package for reading,
+writing, visualizing, and manipulating CIFTI files in R. NeuroImage,
+118877. <https://doi.org/10.1016/j.neuroimage.2022.118877>
 
 ------------------------------------------------------------------------
 
