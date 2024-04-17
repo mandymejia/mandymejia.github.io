@@ -1,0 +1,151 @@
+---
+title: "A layman's guide to working with CIFTI files"
+author: "Mandy Mejia"
+date: "2015-08-10"
+output:
+  md_document:
+    variant: markdown_github
+    preserve_yaml: true
+---
+
+## Update 4/6/2022:
+
+Check out our ciftiTools R package, available via
+[CRAN](https://cran.r-project.org/web/packages/ciftiTools/index.html)
+and [Github](https://github.com/mandymejia/ciftiTools)!
+
+`install.packages("ciftiTools") #install from CRAN`
+
+`devtools::install_github("mandymejia/ciftiTools") #install from GitHub`
+
+We also have a paper about it out in **NeuroImage**:
+
+Pham, D., Muschelli, J., & Mejia, A. (2022). ciftiTools: A package for
+reading, writing, visualizing, and manipulating CIFTI files in R.
+NeuroImage, 118877. <https://doi.org/10.1016/j.neuroimage.2022.118877>
+
+------------------------------------------------------------------------
+
+## Update Fall 2015:
+
+[Here](https://mvpa.blogspot.com/2014/03/nifti-cifti-gifti-in-hcp-and-workbench.html)
+is another nice intro to CIFTI files, by Jo Etzel at WashU.
+
+------------------------------------------------------------------------
+
+## Original Post:
+
+My research group recently began working with the Human Connectome
+Project (HCP) dataset, a large database of resting-state fMRI, task fMRI
+and other brain imaging and demographic data for 500+ subjects. The HCP
+is pretty unique in that it combines a large number of subjects with
+long scans and a standardized scanning protocol. This distinguishes it
+from other large neuroimaging datasets, such as ABIDE, ADHD-200 or the
+1000 Functional Connectomes Project, which are grassroots compilations
+of data collected across multiple sites with different scanning
+equipment, acquisition protocols, preprocessing pipelines and quality
+control procedures. Most of the resting-state scans in those datasets
+are 5-10 minutes long, whereas in the HCP there are 60 minutes of
+resting-state data collected for each subject.
+
+Our group and many others are interested in using the HCP to develop and
+evaluate different ways of analyzing brain imaging data. However, some
+aspects of the HCP are new to many researchers, and it’s not always
+obvious from an outside perspective how to work with and interpret the
+data. One example of this is data stored in “grayordinates” using the
+CIFTI file format. While the HCP also contains data in volumetric space
+(in NIFTI file format), working with the grayordinates is appealing for
+a number of reasons that I won’t elaborate on here, except to say that
+the idea is to isolate the gray matter, which consists of cortical,
+subcortical and cerebellar areas. However, working with CIFTI files can
+be daunting for a new user, and the documentation is not always very
+user-friendly.
+
+I recently started working with these files, so based on my experience
+here is a basic introduction to navigating, reading and writing CIFTI
+files with MATLAB. This explanation is based on my limited experience,
+but it will hopefully be helpful for other novice users. Please feel
+free to make additions or corrections in the comments!
+
+## Part 1: Navigating CIFTI files
+
+The first thing to know about CIFTI files is that they contain several
+parts, similar to a structure in MATLAB or a list in R. In that sense,
+they are very different from NIFTI files, which are essentially just 3D
+or 4D arrays of intensities. Furthermore, there are several types of
+CIFTI files, including times series (\*.dtseries.nii), parcellations
+(\*.dlabel.nii), and scalar images (\*.dscalar.nii), and the parts or
+“fields” contained in each type of CIFTI file are different (though they
+have several commonalities).
+
+Consider a CIFTI file representing time series data. The time series
+themselves are stored in a VxT matrix, where V is the number of
+grayordinate “voxels” and T is the number of time points in the series.
+(Technically “voxels” only refer to volumetric space, but it’s
+convenient to have a single term for both surface and volumetric
+elements… please forgive the abuse of notation.) The total number of
+voxels in a CIFTI file is around 90,000, including about 60,000 surface
+voxels (about 30,000 per hemisphere) and 30,000 subcortical and
+cerebellar voxels. The surface voxels are a 2D representation of the
+cortical gray matter, while the subcortical voxels are still in
+3D/volumetric space. Each surface grayordinate is essentially an average
+of several cortical gray matter voxels in the original volumetric scan.
+So what else does a CIFTI file contain? Common to all types of CIFTI
+files are the following fields:
+
+-   brainstructure: a vector of length V with a numerical indicator
+    (1-21) for the major brain structure that each voxel forms part of
+
+-   brainstructurelabel: a vector of length 21 with the name of each
+    major brain structure (e.g. CORTEX_LEFT, CORTEX_RIGHT, CAUDATE_LEFT,
+    CAUDATE_RIGHT, CEREBELLUM_LEFT, CEREBELLUM_RIGHT, etc.)
+
+-   pos: a Vx3 matrix of the x-y-z coordinates of each voxel. However,
+    only the subcortical and cerebellar voxels have coordinates
+    specified; for surface voxels, the values are missing.
+
+In addition, each type of CIFTI file contains additional information.
+
+-   A time series (\*.dtseries.nii) CIFTI file contains time (1xT) and
+    dtseries (VxT), where time is the timing (in seconds) of each time
+    point (0, 0.72, 1.44, …) and dtseries is the time series of each
+    voxel.
+
+-   A parcellation (\*.dlabel.nii) CIFTI file contains some parcellation
+    field myfield (Vx1) and myfieldlabel (1xQ), where Q is the number of
+    parcels. For example, in the HCP groupICA parcellation files
+    (melodic_IC_ftb.dlabel.nii), the parcellation field is named
+    “indexmax”, and Q is the number of ICA components. (As a side note,
+    I believe “indexmax” refers to how spatial components from a
+    groupICA were used to create a parcellation, namely by identifying
+    the component with the maximum z-score at each voxel.) In the
+    FreeSurfer anatomical parcellation files ending in
+    aparc.32k_fs_LR.dlabel.nii, theparcellation field is named
+    “x100307_aparc”, and Q=70.
+
+-   A scalar (\*.dscalar.nii) CIFTI file contains one or more fields
+    field1 (Vx1), field2 (Vx1), etc., each representing a scalar image
+    of some sort. For example, in the HCP groupICA spatial maps are
+    represented as this type of file, with the fields x1,….,xQ
+    representing the Q spatial maps. Structural images for each subject
+    are also represented as .dscalar files. For example, the files
+    ending in MyelinMap_BC.32k_fs_LR.dscalar.nii contain the field
+    myelinmap_bc, which contain the estimated myelin content of each of
+    the roughly 60,000 surface voxels.
+
+You might have noticed that I never mentioned where CIFTI files store
+the location of each surface voxel. That’s because they don’t! This is
+because the surface can be “inflated” to varying degrees, from very
+“wiggly” (showing full anatomical detail) to completely flattened
+(showing no anatomical detail). Depending on the degree of inflation,
+the 3-dimensional location of each surface voxel changes! For a given
+degree of inflation, the x-y-z location of each voxel are stored as a
+different type of file, called a GIFTI. I’ll mention below how to read
+and navigate these files in MATLAB too.
+
+## Part 2: Reading CIFTI files with MATLAB
+
+<span style="color:red"> ***… this post was originally written on my old
+blog. Read the full post
+[here](https://mandymejia.com/2015/08/10/a-laymans-guide-to-working-with-cifti-files/).
+*** </span>
