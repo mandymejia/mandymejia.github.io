@@ -8,9 +8,7 @@ output:
     preserve_yaml: true
 ---
 
-## Update 4/6/2022:
-
-Check out our ciftiTools R package, available via
+*Update 4/6/2022:* Check out our ciftiTools R package, available via
 [CRAN](https://cran.r-project.org/web/packages/ciftiTools/index.html)
 and [Github](https://github.com/mandymejia/ciftiTools)!
 
@@ -26,8 +24,7 @@ NeuroImage, 118877. <https://doi.org/10.1016/j.neuroimage.2022.118877>
 
 ------------------------------------------------------------------------
 
-## Update Fall 2015:
-
+*Update Fall 2015:*
 [Here](https://mvpa.blogspot.com/2014/03/nifti-cifti-gifti-in-hcp-and-workbench.html)
 is another nice intro to CIFTI files, by Jo Etzel at WashU.
 
