@@ -1,0 +1,32 @@
+---
+title: "How to perform CompCor on HCP fMRI data in R"
+author: "Damon Pham"
+date: "2021-01-29"
+knit: (function(inputFile, encoding) { 
+      rmarkdown::render(inputFile,
+                        encoding=encoding, 
+                        output_file=file.path('~/Documents/Github/mandymejia.github.io/_posts/', '2021-01-29-CompCor.md')) })
+output:
+  md_document:
+    variant: gfm
+    preserve_yaml: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_knit$set(base.dir = "~/Documents/Github/mandymejia.github.io/", base.url = "/")
+knitr::opts_chunk$set(fig.path = "images/")
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE)
+```
+
+
+This is a guest post written by Damon Pham. Damon is a graduate of Indiana University, where he was a Wells Scholar (the highest honor for incoming IU students) and all around extraordinaire. He has been part of my research group for the last several years, where one of his main focuses has been developing software to advance and facilitate research using CIFTI- and surface-format data. He has also been working on methods for outlier detection in fMRI data. (Update: Check out his *NeuroImage* paper on this [here](https://doi.org/10.1016/j.neuroimage.2023.119972)!) In that work we decided to use aCompCor as a preprocessing step before outlier detection. Since we are using CIFTI-format HCP fMRI data, figuring out how to actually do aCompCor was an undertaking. Below, Damon describes why and how he did this. We hope this is useful for other researchers wanting to use CompCor on CIFTI-format data in the HCP and beyond.
+
+Take it away, Damon!
+
+## What is aCompCor?
+
+There are many sources of noise in fMRI, and perhaps many more ways to clean it up. One such technique is anatomical CompCor (aCompCor), first presented by Behzadi et. al. (2007). Numerous studies including Muschelli et. al. (2014) and Ciric et. al. (2017) have demonstrated its effectiveness for attenuating the effects of motion and improving functional connectivity estimates, among other benchmarks, compared to alternatives. aCompCor is also quite simple in theory. It's based on the observation that the BOLD signal in white matter (WM) and cerebrospinal fluid (CSF) is not neuronal in origin. Thus, variation common to gray matter and WM or CSF should be artifactual (e.g. due to motion, heartbeat, respiration, scanner drift). aCompCor regresses the top few principal components (PCs) within WM and CSF from the grey matter, thereby removing shared variation thought to represent noise.
+
+We've observed that aCompCor is really good at attenuating trends and sudden shifts in the data. Both patterns are not of neuronal origin, and later analyses such as functional connectivity assume that they have been eliminated. Let's see an example of aCompCor in action! Here's the timecourse of an arbitrary grey matter voxel before and after aCompCor-5 (five WM PCs and five CSF PCs):
+
+<span style="color:red"> ***... this post was originally written on my old blog.  Read the full post [here](https://mandymejia.wordpress.com/2021/01/29/how-to-perform-compcor-on-hcp-fmri-data-in-r/). *** </span>
