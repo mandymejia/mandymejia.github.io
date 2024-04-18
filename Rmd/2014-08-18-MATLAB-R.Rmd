@@ -1,0 +1,29 @@
+---
+title: "Three ways to use MATLAB from R"
+author: "Mandy Mejia"
+date: "2014-08-18"
+knit: (function(inputFile, encoding) { 
+      rmarkdown::render(inputFile,
+                        encoding=encoding, 
+                        output_file=file.path('~/Documents/Github/mandymejia.github.io/_posts/', '2014-08-18-MATLAB-R.md')) })
+output:
+  md_document:
+    variant: gfm
+    preserve_yaml: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_knit$set(base.dir = "~/Documents/Github/mandymejia.github.io/", base.url = "/")
+knitr::opts_chunk$set(fig.path = "images/")
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE)
+```
+
+Being a statistician working in neuroimaging is a little like living abroad and trying to speak a foreign language. For example, my first language is English, but I spent my first summer as a PhD student doing research at LMU in Munich, Germany. I had taken German in college and could have really basic conversations, but for more demanding situations I would switch to English in a heartbeat, given the option.
+
+In the world of neuroimaging, or at least many corners of it, MATLAB is the official language. Many tools and programs for the analysis of fMRI data are programmed in MATLAB, and many of my collaborators program exclusively in MATLAB. I know MATLAB well enough to do basic things like reading in data, looping and playing with matrices, but beyond the basics, like many statisticians I am much more comfortable in R. Therefore, I often find myself straddling the line between R and MATLAB.
+
+For example, in one of my projects, I used R to read in the fMRI time series, create summary statistics, and do some transformations on those statistics. I then used MATLAB to perform clustering on the results using a method developed by one of my collaborators. Finally, I again used R to visualize the results using the brainR package. For that project, it was convenient enough to write separate programs for the different R and MATLAB parts. I saved the results of the first R part in a CSV file using `write.table`, read that file into MATLAB using `csvread`, saved the output of the MATLAB part in another CSV file, and finally read that into R using `read.table`. Not exactly elegant, but it did the job.
+
+However, I also created and ran a simulation that required the same basic process but over many iterations, and the manual workflow I just described was not a realistic option. I needed a way to run MATLAB automatically from within my R program. (In my case, I eventually compromised and did the clustering in R for the purposes of the simulation, a la option 4 below.) I experimented with different ways to use MATLAB from within R, and I found three primary options. Below I'll show how to do each of these and discuss their pros and cons, but in short the options are (1) to execute a single MATLAB line using the `system()` command in R; (2) to use a package like `R.matlab` to send code to the MATLAB server; or (3) to write out a MATLAB program within R using the `writeLines()` function and run the entire program using the `system()` command in R.
+
+<span style="color:red"> ***... this post was originally written on my old blog.  Read the full post [here](https://mandymejia.wordpress.com/2014/08/18/three-ways-to-use-matlab-from-r/). *** </span>

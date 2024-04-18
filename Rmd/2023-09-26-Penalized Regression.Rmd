@@ -1,5 +1,5 @@
 ---
-title: "Adjusted variable plots in penalized regression"
+title: "Adjusting for confounders in penalized regression"
 author: "Mandy Mejia"
 date: "2023-09-26"
 output:
