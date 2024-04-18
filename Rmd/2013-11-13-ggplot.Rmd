@@ -1,0 +1,23 @@
+---
+title: "10 reasons to switch to ggplot"
+author: "Mandy Mejia"
+date: "2013-11-13"
+knit: (function(inputFile, encoding) { 
+      rmarkdown::render(inputFile,
+                        encoding=encoding, 
+                        output_file=file.path('~/Documents/Github/mandymejia.github.io/_posts/', '2013-11-13-ggplot.md')) })
+output:
+  md_document:
+    variant: gfm
+    preserve_yaml: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_knit$set(base.dir = "~/Documents/Github/mandymejia.github.io/", base.url = "/")
+knitr::opts_chunk$set(fig.path = "images/")
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE)
+```
+
+Making plots is a necessary and useful task for anyone who works with data. While making the standard plots is a pretty straightforward task in most statistical programming languagues, including R, when it comes to using R's base graphics to make custom plots (the plots you actually want to make) things can get complicated. As with many of life's problems, Hadley Wickham comes to the rescue. His R package ggplot2 is based on the principles outlined in Leland Wilkinson’s landmark 1999 book The Grammar of Graphics (hence “gg”). Full disclosure: I haven't read the book. But I have been using ggplot exclusively for over a year, and I have become a believer in the gg approach to visualization. There are a lot of R users out there who are resistant to switching from base graphics to ggplot, and while there are some legitimate downsides and probably settings where it doesn't make sense, for most users I believe it's well worth the time and effort required to get started with ggplot. I mean, the New York Times thinks so! So for all those doubters (or newbies) out there, here goes my best shot at convincing you that switching to ggplot is worth the effort.
+
+<span style="color:red"> ***... this post was originally written on my old blog.  Read the full post [here](https://mandymejia.wordpress.com/2013/11/13/10-reasons-to-switch-to-ggplot-7/). *** </span>
