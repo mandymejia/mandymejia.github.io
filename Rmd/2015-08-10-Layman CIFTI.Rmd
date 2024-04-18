@@ -2,9 +2,13 @@
 title: "A layman's guide to working with CIFTI files"
 author: "Mandy Mejia"
 date: "2015-08-10"
+knit: (function(inputFile, encoding) { 
+      rmarkdown::render(inputFile,
+                        encoding=encoding, 
+                        output_file=file.path('~/Documents/Github/mandymejia.github.io/_posts/', '2015-08-10-Layman-CIFTI.md')) })
 output:
   md_document:
-    variant: markdown_github
+    variant: gfm
     preserve_yaml: true
 ---
 
@@ -14,18 +18,16 @@ knitr::opts_chunk$set(fig.path = "images/")
 knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE)
 ```
 
-*Update 4/6/2022:* Check out our ciftiTools R package, available via [CRAN](https://cran.r-project.org/web/packages/ciftiTools/index.html) and [Github](https://github.com/mandymejia/ciftiTools)!  We also have a paper about it out in **NeuroImage**: Pham, D., Muschelli, J., & Mejia, A. (2022). ciftiTools: A package for reading, writing, visualizing, and manipulating CIFTI files in R. NeuroImage, 118877. [https://doi.org/10.1016/j.neuroimage.2022.118877](https://doi.org/10.1016/j.neuroimage.2022.118877). 
+**Update 4/6/2022:** Check out our ciftiTools R package, available via [CRAN](https://cran.r-project.org/web/packages/ciftiTools/index.html) and [Github](https://github.com/mandymejia/ciftiTools)!  We also have a paper about it out in *NeuroImage*: Pham, D., Muschelli, J., & Mejia, A. (2022). ciftiTools: A package for reading, writing, visualizing, and manipulating CIFTI files in R. *NeuroImage*, 118877. [https://doi.org/10.1016/j.neuroimage.2022.118877](https://doi.org/10.1016/j.neuroimage.2022.118877). 
 
 ----
 
-*Update Fall 2015:* [Here](https://mvpa.blogspot.com/2014/03/nifti-cifti-gifti-in-hcp-and-workbench.html) is another nice intro to CIFTI files, by Jo Etzel at WashU.
+**Update Fall 2015:** [Here](https://mvpa.blogspot.com/2014/03/nifti-cifti-gifti-in-hcp-and-workbench.html) is another nice intro to CIFTI files, by Jo Etzel at WashU.
 
 
 ----
 
-## Original Post:
-
-My research group recently began working with the Human Connectome Project (HCP) dataset, a large database of resting-state fMRI, task fMRI and other brain imaging and demographic data for 500+ subjects.  The HCP is pretty unique in that it combines a large number of subjects with long scans and a standardized scanning protocol.  This distinguishes it from other large neuroimaging datasets, such as ABIDE, ADHD-200 or the 1000 Functional Connectomes Project, which are grassroots compilations of data collected across multiple sites with different scanning equipment, acquisition protocols, preprocessing pipelines and quality control procedures.  Most of the resting-state scans in those datasets are 5-10 minutes long, whereas in the HCP there are 60 minutes of resting-state data collected for each subject. 
+**Original Post:** My research group recently began working with the Human Connectome Project (HCP) dataset, a large database of resting-state fMRI, task fMRI and other brain imaging and demographic data for 500+ subjects.  The HCP is pretty unique in that it combines a large number of subjects with long scans and a standardized scanning protocol.  This distinguishes it from other large neuroimaging datasets, such as ABIDE, ADHD-200 or the 1000 Functional Connectomes Project, which are grassroots compilations of data collected across multiple sites with different scanning equipment, acquisition protocols, preprocessing pipelines and quality control procedures.  Most of the resting-state scans in those datasets are 5-10 minutes long, whereas in the HCP there are 60 minutes of resting-state data collected for each subject. 
 
 Our group and many others are interested in using the HCP to develop and evaluate different ways of analyzing brain imaging data.  However, some aspects of the HCP are new to many researchers, and it's not always obvious from an outside perspective how to work with and interpret the data.  One example of this is data stored in "grayordinates" using the CIFTI file format.  While the HCP also contains data in volumetric space (in NIFTI file format), working with the grayordinates is appealing for a number of reasons that I won't elaborate on here, except to say that the idea is to isolate the gray matter, which consists of cortical, subcortical and cerebellar areas.  However, working with CIFTI files can be daunting for a new user, and the documentation is not always very user-friendly.
 
