@@ -12,7 +12,7 @@ output:
     preserve_yaml: true
 ---
 
-*Update:* My group later published a paper on spatially varying
+*Update 2023:* My group has published a paper on spatially varying
 prewhitening: Parlak et al. “Sources of residual autocorrelation in
 multiband task fMRI and strategies for effective mitigation.” *Frontiers
 in Neuroscience* 16 (2023): 1051424.
