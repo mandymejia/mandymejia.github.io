@@ -12,7 +12,7 @@ output:
     preserve_yaml: true
 ---
 
-**Update 4/6/2022:** Check out our ciftiTools R package, available via
+*Update 2022:* Check out our ciftiTools R package, available via
 [CRAN](https://cran.r-project.org/web/packages/ciftiTools/index.html)
 and [Github](https://github.com/mandymejia/ciftiTools)! We also have a
 paper about it out in *NeuroImage*: Pham, D., Muschelli, J., & Mejia, A.
@@ -20,27 +20,22 @@ paper about it out in *NeuroImage*: Pham, D., Muschelli, J., & Mejia, A.
 manipulating CIFTI files in R. *NeuroImage*, 118877.
 <https://doi.org/10.1016/j.neuroimage.2022.118877>.
 
-------------------------------------------------------------------------
-
-**Update Fall 2015:**
+*Update 2015:*
 [Here](https://mvpa.blogspot.com/2014/03/nifti-cifti-gifti-in-hcp-and-workbench.html)
-is another nice intro to CIFTI files, by Jo Etzel at WashU.
+is a very nice intro to CIFTI files, by Jo Etzel at WashU.
 
-------------------------------------------------------------------------
-
-**Original Post:** My research group recently began working with the
-Human Connectome Project (HCP) dataset, a large database of
-resting-state fMRI, task fMRI and other brain imaging and demographic
-data for 500+ subjects. The HCP is pretty unique in that it combines a
-large number of subjects with long scans and a standardized scanning
-protocol. This distinguishes it from other large neuroimaging datasets,
-such as ABIDE, ADHD-200 or the 1000 Functional Connectomes Project,
-which are grassroots compilations of data collected across multiple
-sites with different scanning equipment, acquisition protocols,
-preprocessing pipelines and quality control procedures. Most of the
-resting-state scans in those datasets are 5-10 minutes long, whereas in
-the HCP there are 60 minutes of resting-state data collected for each
-subject.
+My research group recently began working with the Human Connectome
+Project (HCP) dataset, a large database of resting-state fMRI, task fMRI
+and other brain imaging and demographic data for 500+ subjects. The HCP
+is pretty unique in that it combines a large number of subjects with
+long scans and a standardized scanning protocol. This distinguishes it
+from other large neuroimaging datasets, such as ABIDE, ADHD-200 or the
+1000 Functional Connectomes Project, which are grassroots compilations
+of data collected across multiple sites with different scanning
+equipment, acquisition protocols, preprocessing pipelines and quality
+control procedures. Most of the resting-state scans in those datasets
+are 5-10 minutes long, whereas in the HCP there are 60 minutes of
+resting-state data collected for each subject.
 
 Our group and many others are interested in using the HCP to develop and
 evaluate different ways of analyzing brain imaging data. However, some
