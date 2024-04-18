@@ -1,0 +1,83 @@
+---
+title: 'How to efficiently prewhiten fMRI timeseries the "right" way'
+author: "Mandy Mejia"
+date: "2016-11-06"
+knit: (function(inputFile, encoding) { 
+      rmarkdown::render(inputFile,
+                        encoding=encoding, 
+                        output_file=file.path('~/Documents/Github/mandymejia.github.io/_posts/', '2016-11-06-Prewhitening.md')) })
+output:
+  md_document:
+    variant: gfm
+    preserve_yaml: true
+---
+
+*Update:* My group later published a paper on spatially varying
+prewhitening: Parlak et al. “Sources of residual autocorrelation in
+multiband task fMRI and strategies for effective mitigation.” *Frontiers
+in Neuroscience* 16 (2023): 1051424.
+<https://doi.org/10.3389/fnins.2022.1051424>. We also developed a
+computationally efficient spatially variable prewhitening technique,
+implemented in the BayesfMRI R package
+([CRAN](https://cran.r-project.org/package=BayesfMRI),
+[Github](https://github.com/mandymejia/BayesfMRI)).
+
+I recently got around to reading the high-profile paper “Cluster
+failure: Why fMRI inferences for spatial extent have inflated
+false-positive rates” (Eklund et al. 2016), which called attention to
+the importance of properly processing and analyzing fMRI data. This lead
+me to an earlier paper titled “Does parametric fMRI analysis with SPM
+yield valid results?” (Eklund et al. 2012), which identified mismodeling
+of temporal autocorrelation as a major factor driving high false
+positive rates. From a statistical perspective, accounting for temporal
+autocorrelation is vital to obtain correct standard errors on model
+coefficients, which are the basis for hypothesis tests used to identify
+areas of activation in the brain, a primary goal in many fMRI studies.
+(In fact many group analyses actually ignore first-level standard
+errors, but these should ideally be incorporated into the second-level
+model.)
+
+The 2012 paper pointed out two primary reasons for mismodeling of
+temporal autocorrelation: (a) using too low of a model order, such as
+AR(1), especially for faster TRs, and (b) assuming the same AR
+coefficients across the brain. They also recommend smoothing the
+coefficients to improve the estimates.
+
+As a statistician, I was excited to try out this “correct” approach to
+prewhitening. Increasing the model order was no big deal (I used an
+AR(6) model for TR=0.72 seconds), but doing the prewhitening at the
+voxel level was a bit of a hassle. After much trial and error and a few
+new gray hairs, here’s what I’ve learned. Some of the computational
+strategies are specific to R, but they can probably be easily adapted to
+MATLAB or Python.
+
+1.  AR coefficients definitely seem to vary across the brain.
+
+2.  Averaging across subjects greatly improves the smoothness of the
+    coefficient maps, which is presumably indicative of better
+    estimation.
+
+3.  The prewhitening matrix (the square root inverse covariance matrix)
+    needs to be computed quickly, since you’re going to be doing it
+    separately for every voxel in the brain.
+
+I’ll go into each of these in turn below, but first, let’s review why
+and how prewhitening is actually performed. fMRI task activation studies
+typically rely on fitting a regression model at many different locations
+in the brain, and ordinary least squares regression assumes uncorrelated
+errors. This assumption is the basis of how we compute standard errors
+of coefficient estimates, which in turn are the basis of hypothesis
+testing, which allows us to identify regions of the brain that are
+active in response to different tasks. The validity of these hypothesis
+tests depends primarily on (1) how correction for multiple comparisons
+was performed (the focus of the 2016 paper mentioned above) and (2) the
+accuracy of the standard errors of the model coefficients. If we ignore
+temporal autocorrelation, we will underestimate the true standard errors
+and obtain more false positives.
+
+So how do we fix this?
+
+<span style="color:red"> ***… this post was originally written on my old
+blog. Read the full post
+[here](https://mandymejia.wordpress.com/2016/11/06/how-to-efficiently-prewhiten-fmri-timeseries-the-right-way/).
+*** </span>
