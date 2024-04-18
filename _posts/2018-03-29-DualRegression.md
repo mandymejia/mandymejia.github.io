@@ -1,5 +1,5 @@
 ---
-title: "The Role of Centering in Dual Regression"
+title: "The role of centering in dual regression"
 author: "Mandy Mejia"
 date: "2018-03-29"
 knit: (function(inputFile, encoding) { 

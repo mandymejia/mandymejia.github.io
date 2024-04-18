@@ -1,0 +1,29 @@
+---
+title: "Tips for submitting to arXiv for the first time"
+author: "Mandy Mejia"
+date: "2014-09-18"
+knit: (function(inputFile, encoding) { 
+      rmarkdown::render(inputFile,
+                        encoding=encoding, 
+                        output_file=file.path('~/Documents/Github/mandymejia.github.io/_posts/', '2014-09-18-Arxiv.md')) })
+output:
+  md_document:
+    variant: gfm
+    preserve_yaml: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_knit$set(base.dir = "~/Documents/Github/mandymejia.github.io/", base.url = "/")
+knitr::opts_chunk$set(fig.path = "images/")
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE)
+```
+
+Today I successfully submitted my first paper to arXiv! We've submitted this paper to a journal, but it hasn't been published yet, so we wanted to get a pre-print up before advertising the corresponding software packages.  Unfortunately, the process of submitting to arXiv wasn't painless.  Now that I've figured out some of the quirks, however, hopefully your first submission can go a little more smoothly than mine did.
+
+After registering, the first unpleasant surprise was that arXiv doesn't accept PDF documents created from LaTeX code.  You must submit your LaTeX code and all supporting files.  As far as I can tell, these have to be uploaded one-by-one.  Sorry, I didn't figure out a way around that one (but let me know if you do!).
+
+After verifying that my code compiled without errors on my computer, I uploaded all my documents, hit "Process", and ... long page of errors!  It turns out arXiv doesn't accept .bib files and instead requires .bbl files for BibTeX.  So I thought, "this will be easy" and uploaded my .bbl file instead.  I again hit "Process", and ... another long page of errors!
+
+I wasn't sure how to interpret these errors, so ... I gave up for a while.  A few weeks later, I decided to give it another go.  I realized that I had made a couple of mistakes the first time:
+
+<span style="color:red"> ***... this post was originally written on my old blog.  Read the full post [here](https://mandymejia.com/2014/09/18/tips-for-using-arxiv-for-the-first-time/). *** </span>
