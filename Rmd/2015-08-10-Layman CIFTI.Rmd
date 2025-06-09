@@ -52,4 +52,4 @@ You might have noticed that I never mentioned where CIFTI files store the locati
 
 ## Part 2: Reading CIFTI files with MATLAB
 
-<span style="color:red"> ***... this post was originally written on my old blog.  Read the full post [here](https://mandymejia.com/2015/08/10/a-laymans-guide-to-working-with-cifti-files/). *** </span>
+<span style="color:red"> ***... this post was originally written on my old blog.  Read the full post [here](https://mandymejia.wordpress.com/2015/08/10/a-laymans-guide-to-working-with-cifti-files/). *** </span>

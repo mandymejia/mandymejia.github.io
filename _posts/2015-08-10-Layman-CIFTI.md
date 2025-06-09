@@ -135,5 +135,5 @@ and navigate these files in MATLAB too.
 
 <span style="color:red"> ***… this post was originally written on my old
 blog. Read the full post
-[here](https://mandymejia.com/2015/08/10/a-laymans-guide-to-working-with-cifti-files/).
+[here](https://mandymejia.wordpress.com/2015/08/10/a-laymans-guide-to-working-with-cifti-files/).
 *** </span>
