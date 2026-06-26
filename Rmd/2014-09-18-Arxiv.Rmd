@@ -18,6 +18,8 @@ knitr::opts_chunk$set(fig.path = "images/")
 knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE)
 ```
 
+**Update June 2026: Arxiv has made this process way easier!  It now automatically detects when there are unused files, for example.**
+
 Today I successfully submitted my first paper to arXiv! We've submitted this paper to a journal, but it hasn't been published yet, so we wanted to get a pre-print up before advertising the corresponding software packages.  Unfortunately, the process of submitting to arXiv wasn't painless.  Now that I've figured out some of the quirks, however, hopefully your first submission can go a little more smoothly than mine did.
 
 After registering, the first unpleasant surprise was that arXiv doesn't accept PDF documents created from LaTeX code.  You must submit your LaTeX code and all supporting files.  As far as I can tell, these have to be uploaded one-by-one.  Sorry, I didn't figure out a way around that one (but let me know if you do!).
@@ -26,4 +28,15 @@ After verifying that my code compiled without errors on my computer, I uploaded 
 
 I wasn't sure how to interpret these errors, so ... I gave up for a while.  A few weeks later, I decided to give it another go.  I realized that I had made a couple of mistakes the first time:
 
-<span style="color:red"> ***... this post was originally written on my old blog.  Read the full post [here](https://mandymejia.com/2014/09/18/tips-for-using-arxiv-for-the-first-time/). *** </span>
+1. Several of my graphics were in PDF format.  This is fine, but I needed to include this line at the top of my preamble (top of my .tex document) to ensure that the `.tex` file is built using PDFLaTeX instead of LaTeX:
+`\pdfoutput=1`
+
+2. I had probably uploaded some unnecessary files, such as graphics that weren’t included in the final version.  ArXiv doesn’t like this.  Make sure only necessary files are uploaded.
+
+Fixing those two things resulted finally in an error-free compilation.  Horray!  (If at this point you are still struggling with compilation errors, I highly recommend reading arXiv’s help page on [Considerations for TeX Submissions](https://info.arxiv.org/help/submit_tex.html).)
+
+One final annoyance was the abstract.  I had included an abstract in my document, but arXiv has its own abstract form, and my current abstract exceeded the character limits.  Once I had pared it down, however, I got a couple of errors related to “unknown characters”.  I didn’t have anything crazy in the text, so this seemed a little ridiculous, but I went ahead and removed a ‘%’ sign and a couple of quotation marks and hyphens, which took care of the errors. I then went back and removed the abstract from the .tex document and re-uploaded it.  Submission (finally) complete!
+
+Props to arXiv for a very nice set of help pages, the most relevant of which for this post is [Submitting an Article](https://info.arxiv.org/help/submit/index.html).  This includes links to the TeX Submissions help page referenced above, among many others.
+
+P.S. If you’re curious about the paper, it’s titled “Improving Reliability of Subject-Level Resting-State fMRI Parcellation with Shrinkage Estimators” and is available [here](https://arxiv.org/abs/1409.5450).
